@@ -4,7 +4,7 @@ When you first connect to your node, it may use HTTP which is less secure than H
 
 ## You see a "Your connection is not Private" Error
 
-Some users browsers will show an error and it may appear like myNode interface cannot load. In most cases, the browser is warning you that the certificate is unknown to the browser because the certifcate being used is self-signed by the device. Since the myNode interface is not a public website, the browser can't verify the validity of the certificate, like it does for public websites.
+Some users browsers will show an error and it may appear like MyNode interface cannot load. In most cases, the browser is warning you that the certificate is unknown to the browser because the certifcate being used is self-signed by the device. Since the MyNode interface is not a public website, the browser can't verify the validity of the certificate, like it does for public websites.
 
 You may see an error similar to this.
 
@@ -24,7 +24,7 @@ First, click on the Advanced button to open more options.
 
 Then, click the proceed link. Even though it may say unsafe, the HTTPS certificate is still providing security between your browser and the device.
 
-## You see an "Not Connection" Warning
+## You see an "Not Secure" Warning
 
 Even after accepting the certificate in the section above, you may still see a warning in your browser about the site not being secure, like below.
 

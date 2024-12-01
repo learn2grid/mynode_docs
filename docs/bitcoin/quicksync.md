@@ -1,5 +1,8 @@
 # QuickSync
 
+> **Warning**
+> QuickSync is now disabled by default and no longer recommended. The blockchain has gotten too large for QuickSync to be feasible on most devices.
+
 ## Overview
 QuickSync downloads a torrent for a major chunk of the blockchain from MyNode peers without verifying every block.
 It saves time by avoiding the initial blockchain download and this time benefit is significant when using an HDD but marginal with a SSD.
@@ -18,7 +21,7 @@ If you have an SSD and QuickSync starts, it is highly recommended to disable it.
 
 ## Enable/Disable
 
-Once the blockchain is synced with the network, enabling QuickSync won't affect the Bitcoin blockchain. Instead, it will just download the torrent and start seeding it. This helps myNode peers in downloading the blockchain faster during setup. The upload and download speed can be adjusted to optimize bandwidth usage, as shown in the screenshot below.
+Once the blockchain is synced with the network, enabling QuickSync won't affect the Bitcoin blockchain. Instead, it will just download the torrent and start seeding it. This helps MyNode peers in downloading the blockchain faster during setup. The upload and download speed can be adjusted to optimize bandwidth usage, as shown in the screenshot below.
 
 **Note:** Toggling QuickSync triggers a reboot.
 

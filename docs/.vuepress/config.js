@@ -1,13 +1,15 @@
 module.exports = {
-  title: "myNode Guides and Documentation",
-  description: "Helpful guides and documentation for using myNode and getting the most out of all it has to offer!",
+  title: "Guides and Documentation",
+  description: "Helpful guides and documentation for using MyNode and getting the most out of all it has to offer!",
   base: "/",
   head: [
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['link', { rel : 'icon', href: '/favicon.ico' }],
-    ['link', { rel : 'stylesheet', href: '/css/mynode.css' }]
+    ['link', { rel : 'stylesheet', href: '/css/mynode.css' }],
+    ['script',{async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-871EBBS9WR'},],
+    ['script',{},["window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-871EBBS9WR');",],],
   ],
   themeConfig: {
     repo: 'mynodebtc/mynode_docs',
@@ -18,7 +20,7 @@ module.exports = {
     lastUpdated: false,
     sidebarDepth: 0,
     nav: [
-      { text: "Back to myNode", link: "https://www.mynodebtc.com/"},
+      { text: "Back to MyNode", link: "https://www.mynodebtc.com/"},
       { text: "Order Now!", link: "https://www.mynodebtc.com/order_now"}
     ],
     logo: "/images/logo.png",
@@ -62,8 +64,32 @@ module.exports = {
         title: "Bitcoin Apps",
         children: [
           "/electrum/electrum",
-          "/bitcoin/explorer",
-          "/bitcoin/mempool",
+          {
+            title: "Bitcoin Explorers",
+            children: [
+                "/bitcoin/explorer",
+                "/bitcoin/mempool",
+            ]
+          },
+          {
+            title: "Stores and Crowdfunding",
+            children: [
+                "/btcpay-server/setup.md",
+            ]
+          },
+          {
+            title: "Mixing",
+            children: [
+              "/coinjoin/joinmarket",
+            ]
+          },
+          {
+            title: "Multisig",
+            children: [
+                //"/multisig/caravan", // Not ready
+                "/multisig/specter",
+            ]
+          }
         ]
       },
       {
@@ -79,6 +105,7 @@ module.exports = {
       {
         title: "Lightning Apps",
         children: [
+            '/lightning/alby',
             '/lightning/bluewallet',
             '/lightning/rtl',
             '/lightning/lnbits',
@@ -88,60 +115,54 @@ module.exports = {
         ]
       },
       {
-        title: "BTCPay Server",
-        children : [
-            '/btcpay-server/setup.md'
-        ]
-      },
-      {
-        title: "Multisig Apps",
-        children: [
-          "/multisig/caravan",
-          "/multisig/specter",
-        ]
-      },
-      {
-        title: "CoinJoin / Mixing Apps",
-        children: [
-          "/coinjoin/joinmarket",
-          "/coinjoin/whirlpool",
-        ]
-      },
-      {
         title: "Networking",
         children: [
           "/networking/tor",
-          "/device/connect-wifi"
+          "/device/connect-wifi",
+          "/advanced/find-device-ip",
         ]
       },
       {
-        title: "Remote Access (Tor)",
+        title: "Remote Access",
         children: [
-          "/tor/setup",
-          "/tor/web-gui",
-          "/tor/electrum",
-          ["/tor/zeus", 'Zeus Wallet via Tor'],
+            {
+                title: "Remote Access via Tor",
+                children: [
+                  "/tor/setup",
+                  "/tor/web-gui",
+                  "/tor/electrum",
+                  ["/tor/zeus", 'Zeus Wallet via Tor'],
+                ]
+              },
+              {
+                title: "Remote Access via VPN",
+                children: [
+                  "/vpn/setup",
+                ]
+              },
         ]
       },
       {
-        title: "Remote Access (VPN)",
+        title: "Premium+",
         children: [
-          "/vpn/setup",
+            "/premium_plus/premium_plus",
+            "/premium_plus/connect",
         ]
       },
       {
         title: "Advanced",
         children: [
+          "/advanced/flash-sd-card",
           "/advanced/linux-terminal",
-          "/advanced/find-device-ip",
           "/advanced/customize-config",
-          "/advanced/memory-usage-cap",
           "/advanced/clone-tool",
           "/advanced/custom-app-versions",
           "/advanced/verify-restore-bluewallet.md",
           "/advanced/netdata",
           "/advanced/ssh",
+          "/advanced/install-pc-server",
           "/advanced/install-virtual-box",
+          "/advanced/upgrade-to-beta",
         //   {
         //     title: "Setup Base Images",
         //     children: [
@@ -166,8 +187,10 @@ module.exports = {
           "/troubleshooting/drive-not-found",
           "/troubleshooting/bitcoin-error",
           "/troubleshooting/bitcoin-sync-slow",
+          "/troubleshooting/lightning-network-error",
           "/troubleshooting/electrum-connection-error",
           "/troubleshooting/voltage-error",
+          "/troubleshooting/sd-card-full-error",
           "/troubleshooting/sd-card-readonly-error",
           "/troubleshooting/drive-readonly-error",
           "/troubleshooting/fsck-error"
@@ -185,7 +208,7 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-    ['@vuepress/google-analytics', {'ga': 'UA-140888540-4'}],
+    //['@vuepress/google-analytics', {'ga': 'G-871EBBS9WR'}],
     ['seo', {
         siteTitle: (_, $site) => $site.title,
         title: ($page, $site) => $page.title + " | " + $site.title,
@@ -201,14 +224,14 @@ module.exports = {
 
         customMeta: (add, context) => {
             const {
-                $site, // Site configs provided by Vuepress 
+                $site, // Site configs provided by Vuepress
                 $page, // Page configs provided by Vuepress
-     
+
                 // All the computed options from above:
                 siteTitle, title, description, author, tags,
                 twitterCard, type, url, image, publishedAt, modifiedAt,
             } = context
-     
+
             add('twitter:site', '@mynodebtc')
             add('twitter:creator', '@mynodebtc')
             add('twitter:image', 'http://mynodebtc.com/images/vertical_lightning_white_bg.png')

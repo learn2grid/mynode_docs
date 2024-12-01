@@ -2,7 +2,7 @@
 
 If your device does not appear to have upgraded properly, there are several ways to attempt to resolve the issue. An upgrade issue may appear like the following:
 
-- The myNode version appears incorrect
+- The MyNode version appears incorrect
 - There is a message indicating upgrade failure on the settings page
 - An app is failing after an upgrade
 - An app version is not upgraded after an upgrade
@@ -19,7 +19,7 @@ The upgrade process occurs in several stages:
 4. Reboot
 5. The updated docker images are installed
 
-To prevent failures from compounding, if anything does not succeed during step 1-3, it will jump to step 4 and reboot. This means it is possible for the new files to be in use, but not all applications were updated. This may appear as app version being out of date, but myNode showing as the latest release. 
+To prevent failures from compounding, if anything does not succeed during step 1-3, it will jump to step 4 and reboot. This means it is possible for the new files to be in use, but not all applications were updated. This may appear as app version being out of date, but MyNode showing as the latest release. 
 
 This type of error can occur due to network errors, web servers being down, etc.. that can all happen during the upgrade.
 
@@ -36,6 +36,18 @@ The simplest action to take, which is likely help resolve the issue, is to re-at
 Click the "Install Latest Version" button and the device will reboot and attempt to re-run the upgrade process.
 
 It may help to wait a period of time before re-trying if the issue was caused by a network or server issue.
+
+## Re-attempt the Upgrade via Linux Terminal
+
+If the error is preventing access to the web interface, try using the Linux Terminal to re-attempt the upgrade.
+
+First, connect to the Linux Terminal using [this guide](/advanced/linux-terminal.html).
+
+Second, type in the following command and press enter. It will prompt you for your password. Enter it and press enter again.
+
+`sudo /usr/bin/mynode_upgrade.sh`
+
+The upgrade should re-run and fix any issues caused by the first failed upgrade.
 
 ## Upgrade a Specific App
 
@@ -74,3 +86,18 @@ Logs from applications experiencing issues can be found on the status page by cl
     <img src="/images/troubleshooting/show_app_log.png" alt="Show App Log Button">
   </figure>
 </center>
+
+## Re-flash the SD card
+
+The final thing to try is re-flashing the SD card, especially if more than one version has failed to update properly. This will clear any corrupt data and write a fresh MyNode operating system to the SD card. All critical data is saved on the external drive, so you will not lose your Bitcoin or Lightning data. Some applications may need to be re-installed.
+
+Detailed instructions available on the <a href="https://mynodebtc.com/download">download</a> page.
+
+- Shutdown device using the button on the settings page
+- Remove SD Card from Device
+- Re-flash the SD Card
+- Insert SD card back into the device
+- Power device back on (may need to remove and re-connect power cable)
+- Your password will also be reset to "bolt"!
+
+Note: This process may cause your device to get a new IP address.
